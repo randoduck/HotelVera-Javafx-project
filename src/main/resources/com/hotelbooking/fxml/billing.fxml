@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="15" style="-fx-padding: 40; -fx-background-color: white;"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hotelbooking.controller.BillingController">
+
+    <!-- HEADER -->
+    <HBox alignment="CENTER">
+        <Label text="🏨 Hotel Booking System"
+               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="INVOICE"
+               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- BOOKING INFO -->
+    <HBox spacing="10">
+        <Label text="Invoice ID:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="invoiceIdLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Booking ID:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="bookingIdLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Guest Name:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="guestNameLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Room:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="roomLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Check-In:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="checkInLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Check-Out:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="checkOutLabel" text="-"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Nights:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="nightsLabel" text="-"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- BILLING BREAKDOWN -->
+    <HBox spacing="10">
+        <Label text="Room Charges:" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="roomChargesLabel" text="Rs.0.00"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Tax (18% GST):" style="-fx-font-weight: bold; -fx-pref-width: 160;"/>
+        <Label fx:id="taxLabel" text="Rs.0.00"/>
+    </HBox>
+
+    <Separator/>
+
+    <HBox spacing="10">
+        <Label text="GRAND TOTAL:"
+               style="-fx-font-weight: bold; -fx-font-size: 16; -fx-pref-width: 160;
+                      -fx-text-fill: #2c3e50;"/>
+        <Label fx:id="grandTotalLabel" text="Rs.0.00"
+               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- BUTTONS -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Close" onAction="#handleClose"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                       -fx-font-size: 13; -fx-padding: 8 20; -fx-cursor: hand;"/>
+    </HBox>
+
+    <HBox alignment="CENTER">
+        <Label text="Thank you for choosing us!"
+               style="-fx-text-fill: #95a5a6; -fx-font-size: 12;"/>
+    </HBox>
+
+</VBox>

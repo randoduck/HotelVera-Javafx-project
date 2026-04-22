@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+                 xmlns:fx="http://javafx.com/fxml"
+                 fx:controller="com.hotelbooking.controller.DashboardController">
+
+       <ImageView fitWidth="1400" fitHeight="900" preserveRatio="false" mouseTransparent="true">
+              <image>
+                     <Image url="@../lobby.jpg"/>
+              </image>
+       </ImageView>
+
+<BorderPane style="-fx-background-color: rgba(40, 25, 15, 0.55);">
+
+    <!-- TOP NAV BAR -->
+    <top>
+       <HBox alignment="CENTER_LEFT" spacing="20"
+             style="-fx-background-color: rgba(59, 38, 24, 0.92); -fx-padding: 15;">
+           <Label text="Hotel Vera"
+                   style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="New Booking" onAction="#openBooking"
+                  style="-fx-background-color: #8B5E3C; -fx-text-fill: white;
+                           -fx-font-size: 13; -fx-cursor: hand; -fx-padding: 8 16;"/>
+            <Button text="Refresh" onAction="#handleRefresh"
+                  style="-fx-background-color: #A47148; -fx-text-fill: white;
+                           -fx-font-size: 13; -fx-cursor: hand; -fx-padding: 8 16;"/>
+            <Button text="Reset All Data" onAction="#handleReset"
+                   style="-fx-background-color: #6F4E37; -fx-text-fill: white;
+               -fx-font-size: 13; -fx-cursor: hand; -fx-padding: 8 16;"/>
+            <Button text="Logout" onAction="#handleLogout"
+                  style="-fx-background-color: #5C3A21; -fx-text-fill: white;
+                           -fx-font-size: 13; -fx-cursor: hand; -fx-padding: 8 16;"/>
+        </HBox>
+    </top>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- STATS ROW -->
+            <HBox spacing="20">
+                  <VBox alignment="CENTER" spacing="5"
+                         style="-fx-background-color: rgba(139, 94, 60, 0.92); -fx-padding: 20;
+                             -fx-pref-width: 180; -fx-background-radius: 10;">
+                    <Label fx:id="totalRoomsLabel" text="0"
+                           style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Total Rooms"
+                           style="-fx-text-fill: white; -fx-font-size: 13;"/>
+                </VBox>
+                  <VBox alignment="CENTER" spacing="5"
+                         style="-fx-background-color: rgba(164, 113, 72, 0.92); -fx-padding: 20;
+                             -fx-pref-width: 180; -fx-background-radius: 10;">
+                    <Label fx:id="availableRoomsLabel" text="0"
+                           style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Available Rooms"
+                           style="-fx-text-fill: white; -fx-font-size: 13;"/>
+                </VBox>
+                  <VBox alignment="CENTER" spacing="5"
+                         style="-fx-background-color: rgba(111, 78, 55, 0.92); -fx-padding: 20;
+                             -fx-pref-width: 180; -fx-background-radius: 10;">
+                    <Label fx:id="occupiedRoomsLabel" text="0"
+                           style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Occupied Rooms"
+                           style="-fx-text-fill: white; -fx-font-size: 13;"/>
+                </VBox>
+                  <VBox alignment="CENTER" spacing="5"
+                         style="-fx-background-color: rgba(92, 58, 33, 0.92); -fx-padding: 20;
+                             -fx-pref-width: 180; -fx-background-radius: 10;">
+                    <Label fx:id="totalBookingsLabel" text="0"
+                           style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Total Bookings"
+                           style="-fx-text-fill: white; -fx-font-size: 13;"/>
+                </VBox>
+            </HBox>
+
+            <!-- TABS -->
+            <TabPane VBox.vgrow="ALWAYS" styleClass="vera-tab-pane">
+
+                <!-- ROOMS TAB -->
+                            <Tab text="Rooms" closable="false">
+                                   <VBox spacing="10" style="-fx-background-color: rgba(255, 250, 245, 0.92); -fx-padding: 10; -fx-background-radius: 8;">
+                        <Label text="Room Overview"
+                                                    style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #5C3A21;"/>
+                        <TableView fx:id="roomsTable" prefHeight="250">
+                            <columns>
+                                <TableColumn fx:id="roomNumberCol" text="Room No." prefWidth="100"/>
+                                <TableColumn fx:id="roomTypeCol"   text="Type"     prefWidth="150"/>
+                                <TableColumn fx:id="roomPriceCol"  text="Price/Night" prefWidth="150"/>
+                                <TableColumn fx:id="roomStatusCol" text="Status"   prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- BOOKINGS TAB -->
+              <Tab text="Bookings" closable="false">
+              <VBox spacing="10" style="-fx-background-color: rgba(255, 250, 245, 0.92); -fx-padding: 10; -fx-background-radius: 8;">
+                     <Label text="All Bookings"
+                            style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #5C3A21;"/>
+                     <TableView fx:id="bookingsTable" prefHeight="250">
+                     <columns>
+                            <TableColumn fx:id="bookingIdCol"      text="ID"         prefWidth="50"/>
+                            <TableColumn fx:id="bookingGuestCol"   text="Guest"      prefWidth="140"/>
+                            <TableColumn fx:id="bookingRoomCol"    text="Room"       prefWidth="80"/>
+                            <TableColumn fx:id="bookingCheckInCol"  text="Check-In"  prefWidth="110"/>
+                            <TableColumn fx:id="bookingCheckOutCol" text="Check-Out" prefWidth="110"/>
+                            <TableColumn fx:id="bookingStatusCol"  text="Status"     prefWidth="100"/>
+                     </columns>
+                     </TableView>
+                     <HBox spacing="10">
+                     <Button text="Cancel Selected Booking" onAction="#handleCancelBooking"
+                            style="-fx-background-color: #8B5E3C; -fx-text-fill: white;
+                                   -fx-font-size: 13; -fx-padding: 8 16; -fx-cursor: hand;"/>
+                     <Label fx:id="cancelStatusLabel" style="-fx-font-size: 13;"/>
+                     </HBox>
+              </VBox>
+              </Tab>
+
+            </TabPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>
+</StackPane>
